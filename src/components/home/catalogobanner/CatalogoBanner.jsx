@@ -30,7 +30,7 @@ const marcas = [
   {
     Id: 6,
     Descripcion: "whey",
-    Imagen: "/public/carrusel/whey.jpg",
+    Imagen: "/carrusel/whey.jpg",
   },
 ];
 
@@ -69,19 +69,19 @@ function CatalogoProducts() {
     <div>
         <div className="bg-white dark:bg-gray-800 p-4 shadow-md flex flex-wrap gap-4 justify-between text-black dark:text-white mb-4">
         <div className="flex-1 min-w-[150px] flex flex-col items-center text-center">
-            <img src="/public/icons/compra-local.png" alt="local" className="w-12 h-12 mb-2" />
+            <img src="/icons/compra-local.png" alt="local" className="w-12 h-12 mb-2" />
             <p className="font-semibold text-sm">Locales establecidos</p>
         </div>
         <div className="flex-1 min-w-[150px] flex flex-col items-center text-center">
-            <img src="/public/icons/carrito-de-compras.png" alt="carrito" className="w-12 h-12 mb-2" />
+            <img src="/icons/carrito-de-compras.png" alt="carrito" className="w-12 h-12 mb-2" />
             <p className="font-semibold text-sm">Amplia variedad Productos</p>
         </div>
         <div className="flex-1 min-w-[150px] flex flex-col items-center text-center">
-            <img src="/public/icons/promocion.png" alt="Promocion" className="w-12 h-12 mb-2" />
+            <img src="/icons/promocion.png" alt="Promocion" className="w-12 h-12 mb-2" />
             <p className="font-semibold text-sm">Super Promos</p>
         </div>
         <div className="flex-1 min-w-[150px] flex flex-col items-center text-center">
-            <img src="/public/icons/apoyo.png" alt="apoyo" className="w-12 h-12 mb-2" />
+            <img src="/icons/apoyo.png" alt="apoyo" className="w-12 h-12 mb-2" />
             <p className="font-semibold text-sm">Atencion personalizada</p>
         </div>
         </div>
@@ -94,18 +94,21 @@ function CatalogoProducts() {
             </div>
         </div>
         <div
-          className="bg-white dark:bg-gray-800 p-4 shadow-md flex flex-wrap gap-4 justify-between text-black dark:text-white mt-4 relative"
+          className="bg-white dark:bg-gray-800 p-4 text-black dark:text-white mt-4 rounded-lg"
           style={{ boxShadow: '0 -4px 6px -4px rgba(0,0,0,0.1)' }}
         >
-          {marcas.map((marca) => (
-            <img
-              key={marca.Id}
-              src={marca.Imagen}
-              alt={marca.Descripcion}
-              title={marca.Descripcion}
-              className="w-[70px] h-[70px] object-cover"
-            />
-          ))}
+          {/* Grid para pantallas chicas, flex solo en md hacia arriba */}
+          <div className="grid grid-cols-3 gap-2 sm:flex">
+            {marcas.map((marca) => (
+              <img
+                key={marca.Id}
+                src={marca.Imagen}
+                alt={marca.Descripcion}
+                title={marca.Descripcion}
+                className="w-full max-w-[140px] h-[80px] object-cover mx-auto transition-transform duration-200 hover:scale-105"
+              />
+            ))}
+          </div>
         </div>
     </div>
   );
