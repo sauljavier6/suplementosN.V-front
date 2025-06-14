@@ -1,0 +1,10 @@
+
+.menuitem {
+  color: #ffffff; /* Ejemplo: azul tipo Tailwind text-blue-600 */
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.menuitem:hover {
+  color: #b0afaf; /* Ejemplo: gris tipo Tailwind text-gray-500 */
+}
