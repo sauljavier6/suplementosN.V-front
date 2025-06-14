@@ -69,16 +69,16 @@ const AppLayout = () => {
             <div></div>
             <ul className="flex gap-2" role="none">
               <li>
-                <a href="#" className={styles.menuitem} role="menuitem" target="_blank" rel="noopener noreferrer"><img src="/public/icons/tik-tok.png" alt="tiktok" className="w-[25px] h-auto filter" /></a>
+                <a href="#" className={styles.menuitem} role="menuitem" target="_blank" rel="noopener noreferrer"><img src="/icons/tik-tok.png" alt="tiktok" className="w-[25px] h-auto filter" /></a>
               </li>
               <li>
-                <a href="#" className={styles.menuitem} role="menuitem" target="_blank" rel="noopener noreferrer"><img src="/public/icons/facebook.png" alt="facebook" className="w-[25px] h-auto filter" /></a>
+                <a href="#" className={styles.menuitem} role="menuitem" target="_blank" rel="noopener noreferrer"><img src="/icons/facebook.png" alt="facebook" className="w-[25px] h-auto filter" /></a>
               </li>
               <li>
-                <a href="https://www.instagram.com/suplementos_n.v/?hl=es" className={styles.menuitem} role="menuitem" target="_blank" rel="noopener noreferrer"><img src="/public/icons/instagram.png" alt="instagram" className="w-[25px] h-auto filter" /></a>
+                <a href="https://www.instagram.com/suplementos_n.v/?hl=es" className={styles.menuitem} role="menuitem" target="_blank" rel="noopener noreferrer"><img src="/icons/instagram.png" alt="instagram" className="w-[25px] h-auto filter" /></a>
               </li>
               <li>
-                <a href="#" className={styles.menuitem} role="menuitem" target="_blank" rel="noopener noreferrer"><img src="/public/icons/whatsapp.png" alt="whatsapp" className="w-[25px] h-auto filter" /></a>
+                <a href="#" className={styles.menuitem} role="menuitem" target="_blank" rel="noopener noreferrer"><img src="/icons/whatsapp.png" alt="whatsapp" className="w-[25px] h-auto filter" /></a>
               </li>
             </ul>
           </div>
@@ -224,7 +224,7 @@ const AppLayout = () => {
                   />
                 ) : (
                   <img
-                    src="/public/icons/vaso.png"
+                    src="/icons/vaso.png"
                     alt="buscar"
                     className="w-6 h-6 cursor-pointer"
                     onClick={handleIconClick}
@@ -245,7 +245,7 @@ const AppLayout = () => {
               <img src="/suplementosn.v.jpg" alt="Logo" className="h-10 rounded-3xl" />
             </a>
             <button onClick={toggleMenu} className="text-white">
-              <img src="/public/icons/barra-de-menus.png" alt="Menu" className="w-6 h-6" />
+              <img src="/icons/barra-de-menus.png" alt="Menu" className="w-6 h-6" />
             </button>
           </div>
 
@@ -358,7 +358,7 @@ const AppLayout = () => {
                   />
                 ) : (
                   <img
-                    src="/public/icons/vaso.png"
+                    src="/icons/vaso.png"
                     alt="buscar"
                     className="w-6 h-6 cursor-pointer"
                     onClick={handleIconClick}

@@ -98,7 +98,7 @@ function CatalogoBanner() {
                 className="w-full flex items-center justify-between text-gray-700 hover:text-blue-700 hover:bg-blue-100 transition-colors px-3 py-2 rounded-md"
               >
                 <span className="flex gap-3 items-center">Hombre</span>
-                <span>{openMenu === "hombre" ? <img src="/public/icons/flecha-negra.png" alt="flecha arriba" className="w-4 h-4 rotate-90"/> : <img src="/public/icons/flecha-negra.png" alt="flecha arriba" className="w-4 h-4 rotate-270"/>}</span>
+                <span>{openMenu === "hombre" ? <img src="/icons/flecha-negra.png" alt="flecha arriba" className="w-4 h-4 rotate-90"/> : <img src="/icons/flecha-negra.png" alt="flecha arriba" className="w-4 h-4 rotate-270"/>}</span>
               </button>
               {openMenu === "hombre" && (
               <div className="ml-6 mt-1 flex flex-col gap-2 text-sm text-gray-600">
@@ -116,7 +116,7 @@ function CatalogoBanner() {
                 className="w-full flex items-center justify-between text-gray-700 hover:text-blue-700 hover:bg-blue-100 transition-colors px-3 py-2 rounded-md"
               >
                 <span className="flex gap-3 items-center">Mujer</span>
-                <span>{openMenu === "mujer" ? <img src="/public/icons/flecha-negra.png" alt="flecha arriba" className="w-4 h-4 rotate-90"/> : <img src="/public/icons/flecha-negra.png" alt="flecha arriba" className="w-4 h-4 rotate-270"/>}</span>
+                <span>{openMenu === "mujer" ? <img src="/icons/flecha-negra.png" alt="flecha arriba" className="w-4 h-4 rotate-90"/> : <img src="/icons/flecha-negra.png" alt="flecha arriba" className="w-4 h-4 rotate-270"/>}</span>
               </button>
               {openMenu === "mujer" && (
               <div className="ml-6 mt-1 flex flex-col gap-2 text-sm text-gray-600">
@@ -136,7 +136,7 @@ function CatalogoBanner() {
                 className="w-full flex items-center justify-between text-gray-700 hover:text-blue-700 hover:bg-blue-100 transition-colors px-3 py-2 rounded-md"
               >
                 <span className="flex gap-3 items-center">Suplementos</span>
-                <span>{openMenu === "suplementos" ? <img src="/public/icons/flecha-negra.png" alt="flecha arriba" className="w-4 h-4 rotate-90"/> : <img src="/public/icons/flecha-negra.png" alt="flecha arriba" className="w-4 h-4 rotate-270"/>}</span>
+                <span>{openMenu === "suplementos" ? <img src="/icons/flecha-negra.png" alt="flecha arriba" className="w-4 h-4 rotate-90"/> : <img src="/icons/flecha-negra.png" alt="flecha arriba" className="w-4 h-4 rotate-270"/>}</span>
               </button>
               {openMenu === "suplementos" && (
               <div className="ml-6 mt-1 flex flex-col gap-2 text-sm text-gray-600">
