@@ -16,14 +16,14 @@ function CollageBanner() {
 
     <div className="bg-black w-full grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 p-4">
     {[
-        "/public/carrusel/H691552b05de0485a9f3ee4d666b10405Y.png",
-        "/public/carrusel/H1faa3e5d7c8646e689eb3567d166e313B.png",
-        "/public/carrusel/02e0533be2dba4eb0c6e862e7a310344.png",
-        "/public/carrusel/fe14f5e80230117ebf14d7912598cd9e.png",
-        "/public/carrusel/entrenamiento_reebok_mujer_dt.png",
-        "/public/carrusel/a2f37ee44c22662672d65ed1289c08cc.png",
-        "/public/carrusel/eb32abf202ca1eb048bd9492b81ff3e5.png",
-        "/public/carrusel/172ecd884bae61560e89a1e2f342fbd3.png",
+        "/carrusel/H691552b05de0485a9f3ee4d666b10405Y.png",
+        "/carrusel/H1faa3e5d7c8646e689eb3567d166e313B.png",
+        "/carrusel/02e0533be2dba4eb0c6e862e7a310344.png",
+        "/carrusel/fe14f5e80230117ebf14d7912598cd9e.png",
+        "/carrusel/entrenamiento_reebok_mujer_dt.png",
+        "/carrusel/a2f37ee44c22662672d65ed1289c08cc.png",
+        "/carrusel/eb32abf202ca1eb048bd9492b81ff3e5.png",
+        "/carrusel/172ecd884bae61560e89a1e2f342fbd3.png",
     ].map((src, index) => (
         <div key={index} className="w-full aspect-square overflow-hidden shadow">
         <img
