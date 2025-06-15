@@ -15,7 +15,7 @@ const AppRoutes= () => {
         <Route path="detalles/:id" element={<ProductDetails />} /> 
         <Route path="productos/:categoria" element={<ProductsPage />} /> 
         <Route path="productos/search/:busqueda" element={<ProductsPage />} /> 
-        <Route path="cargar/imagen" element={<CloudinaryPage />} />
+        <Route path="imagen" element={<CloudinaryPage />} />
       </Route>
 
       {/* Redirección */}
