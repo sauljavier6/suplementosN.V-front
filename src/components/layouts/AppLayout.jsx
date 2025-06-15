@@ -69,16 +69,25 @@ const AppLayout = () => {
             <div></div>
             <ul className="flex gap-2" role="none">
               <li>
-                <a href="#" className={styles.menuitem} role="menuitem" target="_blank" rel="noopener noreferrer"><img src="/icons/tik-tok.png" alt="tiktok" className="w-[25px] h-auto filter" /></a>
-              </li>
-              <li>
-                <a href="#" className={styles.menuitem} role="menuitem" target="_blank" rel="noopener noreferrer"><img src="/icons/facebook.png" alt="facebook" className="w-[25px] h-auto filter" /></a>
+                <a href="https://www.facebook.com/share/1CqAqaxUYA/?mibextid=wwXIfr" className={styles.menuitem} role="menuitem" target="_blank" rel="noopener noreferrer"><img src="/icons/facebook.png" alt="facebook" className="w-[25px] h-auto filter" /></a>
               </li>
               <li>
                 <a href="https://www.instagram.com/suplementos_n.v/?hl=es" className={styles.menuitem} role="menuitem" target="_blank" rel="noopener noreferrer"><img src="/icons/instagram.png" alt="instagram" className="w-[25px] h-auto filter" /></a>
               </li>
               <li>
-                <a href="#" className={styles.menuitem} role="menuitem" target="_blank" rel="noopener noreferrer"><img src="/icons/whatsapp.png" alt="whatsapp" className="w-[25px] h-auto filter" /></a>
+              <a
+                href="https://wa.me/5216462781997?text=Hola%20quiero%20más%20información%20sobre%20los%20productos"
+                className={styles.menuitem}
+                role="menuitem"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/icons/whatsapp.png"
+                  alt="whatsapp"
+                  className="w-[25px] h-auto filter"
+                />
+              </a>
               </li>
             </ul>
           </div>
@@ -106,11 +115,6 @@ const AppLayout = () => {
                   </div>
                   <ul className="absolute left-0 hidden group-hover:block bg-gray-800 shadow-lg rounded-lg w-40 z-10">
                     <li>
-                      <Link to="/productos/0ce0a0e5-3897-4859-b8e2-eb1307eca211" className={`${styles.menuitem} block px-4 py-2 hover:bg-gray-100 rounded-lg`}>
-                        DRAC SPORT
-                      </Link>
-                    </li>
-                    <li>
                       <Link to="/productos/a6028cec-3718-4e4f-90b0-44cecbe430d9" className={`${styles.menuitem} block px-4 py-2 hover:bg-gray-100 rounded-lg`}>
                         Under Armour
                       </Link>
@@ -118,11 +122,6 @@ const AppLayout = () => {
                     <li>
                       <Link to="/productos/53ab37e4-9ab8-4286-9f47-0641feb624b0" className={`${styles.menuitem} block px-4 py-2 hover:bg-gray-100 rounded-lg`}>
                         GymShark
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/productos/55e68c28-2833-4bc6-a3e4-390f92436061" className={`${styles.menuitem} block px-4 py-2 hover:bg-gray-100 rounded-lg`}>
-                        Ropa Hombre
                       </Link>
                     </li>
                   </ul>
@@ -381,39 +380,28 @@ const AppLayout = () => {
           <h3 className="text-lg font-semibold mb-4">Nuestras Ubicaciones</h3>
           <div className="text-sm space-y-2">
             <p>
-              <span className="font-semibold">Dirección:</span> Torre Reforma, Paseo de la Reforma 483, Cuauhtémoc, 06500 Ciudad de México, CDMX, México
-            </p>
-            <p>
-              <span className="font-semibold">Teléfono:</span> +52 55 1234 5678
-            </p>
-            <p>
-              <span className="font-semibold">Correo electrónico:</span>{' '}
-              <a href="mailto:contacto@medicare.mx" className="underline hover:text-blue-300">
-                contacto@medicare.mx
-              </a>
+              <span className="font-semibold">Teléfono:</span> +52: 6462781997
             </p>
           </div>
-          <div className="text-sm space-y-2">
+          <div className="text-sm space-y-2 mt-4">
             <p>
-              <span className="font-semibold">Dirección:</span> Torre Reforma, Paseo de la Reforma 483, Cuauhtémoc, 06500 Ciudad de México, CDMX, México
+              <span className="font-semibold">Dirección:</span> 206 Calle sexta, zona centro, Ensenada, Baja california, Mexico
             </p>
             <p>
-              <span className="font-semibold">Teléfono:</span> +52 55 1234 5678
+              <span className="font-semibold">Dirección:</span> Blvd. Gral. Juan Zertuche 937, Valle Dorado, 22890 Ensenada, Baja california, Mexico
             </p>
             <p>
-              <span className="font-semibold">Correo electrónico:</span>{' '}
-              <a href="mailto:contacto@medicare.mx" className="underline hover:text-blue-300">
-                contacto@medicare.mx
-              </a>
+              <span className="font-semibold">Dirección:</span> Av. Diamante 2057, Hidalgo, 22880 Ensenada, Baja california, Mexico
             </p>
           </div>
+
         </div>
 
         {/* Columna de mapa */}
         <div className="md:w-1/2 w-full h-60 md:h-44 rounded-lg overflow-hidden shadow-md">
           <iframe
             title="Mapa de ubicación"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.451355688957!2d-99.16318468468205!3d19.39299378689979!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff49c4b3f7b7%3A0xdea44d2e56f11398!2sTorre%20Reforma!5e0!3m2!1ses!2smx!4v1615580387286!5m2!1ses!2smx"
+            src="https://www.google.com/maps/d/u/0/embed?mid=12zu-u-wFLP80AqhFmDAMPwjnRexPOjg&ehbc=2E312F&noprof=1"
             width="100%"
             height="100%"
             allowFullScreen

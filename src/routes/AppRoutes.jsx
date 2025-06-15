@@ -3,6 +3,7 @@ import AppLayout from '../components/layouts/AppLayout';
 import HomePage from '../pages/homepage/HomePage';
 import ProductDetails from '../pages/productdetailspage/ProductDetailsPage';
 import ProductsPage from '../pages/productspage/ProductsPage';
+import CloudinaryPage from '../pages/cloudinarypage/CloudinaryPage';
 
 const AppRoutes= () => {
 
@@ -14,6 +15,7 @@ const AppRoutes= () => {
         <Route path="detalles/:id" element={<ProductDetails />} /> 
         <Route path="productos/:categoria" element={<ProductsPage />} /> 
         <Route path="productos/search/:busqueda" element={<ProductsPage />} /> 
+        <Route path="cargar/imagen" element={<CloudinaryPage />} />
       </Route>
 
       {/* Redirección */}
