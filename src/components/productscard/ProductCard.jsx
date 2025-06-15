@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function ProductCard({ product }) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [imageSrc, setImageSrc] = useState(product.image_url);
+
+  useEffect(() => {
+    const cleanName = product?.item_name?.split("/")[0];
+    if (!cleanName) return;
+
+    const cloudUrl = `https://res.cloudinary.com/dsrxhrjfu/image/upload/v1/productos/${cleanName}/img1.jpg`;
+    const testImage = new Image();
+
+    testImage.src = cloudUrl;
+    testImage.onload = () => setImageSrc(cloudUrl); // usar Cloudinary si existe
+    testImage.onerror = () => setImageSrc(product.image_url); // fallback a image_url
+  }, [product]);
 
   const handleDetailsClick = () => {
     console.log("Detalles del producto:", product);
@@ -16,7 +29,7 @@ export default function ProductCard({ product }) {
     >
       <div className="w-full aspect-square rounded-lg mb-4 overflow-hidden">
         <img
-          src={product.image_url}
+          src={imageSrc}
           alt={product.item_name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 rounded-lg"
         />
@@ -41,4 +54,4 @@ export default function ProductCard({ product }) {
       </button>
     </div>
   );
-} 
+}
