@@ -24,7 +24,7 @@ const Cloudinary = () => {
       formData.append("file", selectedFiles[i]);
       formData.append("upload_preset", UPLOAD_PRESET);
       formData.append("folder", `productos/${folderName}`);
-      formData.append("public_id", `img${i + 1}`); // nombre fijo img1, img2, etc
+      formData.append("public_id", `img${i + 1}`);
 
       const res = await fetch(CLOUDINARY_URL, {
         method: "POST",

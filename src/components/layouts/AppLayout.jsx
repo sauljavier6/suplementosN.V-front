@@ -120,6 +120,11 @@ const AppLayout = () => {
                       </Link>
                     </li>
                     <li>
+                      <Link to="/imagen" className={`${styles.menuitem} block px-4 py-2 hover:bg-gray-100 rounded-lg`}>
+                        imagen
+                      </Link>
+                    </li>
+                    <li>
                       <Link to="/productos/53ab37e4-9ab8-4286-9f47-0641feb624b0" className={`${styles.menuitem} block px-4 py-2 hover:bg-gray-100 rounded-lg`}>
                         GymShark
                       </Link>
