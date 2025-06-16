@@ -88,16 +88,16 @@ import { useParams } from "react-router-dom";
                 <div className="flex flex-wrap gap-2">
                 {product?.variants?.map((variant, i) => (
                 <div key={i} className="mb-4 p-3 border border-gray-200 rounded-md shadow-sm bg-white">
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center gap-2">
                     <p className="font-semibold text-gray-800">
-                      Talla: {variant.option1_value}
+                      Talla: {variant.option1_value }
                     </p>
                     <p className="text-sm text-gray-600">
                       Stock: <span className="font-medium text-black">{variant.total_stock ?? "No definido"}</span>
                     </p>
                   </div>
                   <p className="mt-1 text-sm text-green-600 font-semibold">
-                    Precio: ${variant.cost?.toFixed(2) ?? "No disponible"}
+                    Precio: ${variant.stores[0]?.price.toFixed(2) ?? "No disponible"}
                   </p>
                 </div>
                 ))}
