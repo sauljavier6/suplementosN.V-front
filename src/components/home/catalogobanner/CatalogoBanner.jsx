@@ -74,15 +74,15 @@ function CatalogoProducts() {
         </div>
         <div className="flex-1 min-w-[150px] flex flex-col items-center text-center">
             <img src="/icons/carrito-de-compras.png" alt="carrito" className="w-12 h-12 mb-2" />
-            <p className="font-semibold text-sm">Amplia variedad Productos</p>
+            <p className="font-semibold text-sm">Amplia variedad de productos</p>
         </div>
         <div className="flex-1 min-w-[150px] flex flex-col items-center text-center">
             <img src="/icons/promocion.png" alt="Promocion" className="w-12 h-12 mb-2" />
-            <p className="font-semibold text-sm">Super Promos</p>
+            <p className="font-semibold text-sm">Súper promociones</p>
         </div>
         <div className="flex-1 min-w-[150px] flex flex-col items-center text-center">
             <img src="/icons/apoyo.png" alt="apoyo" className="w-12 h-12 mb-2" />
-            <p className="font-semibold text-sm">Atencion personalizada</p>
+            <p className="font-semibold text-sm">Atención personalizada</p>
         </div>
         </div>
 

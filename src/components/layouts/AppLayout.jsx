@@ -274,10 +274,8 @@ const AppLayout = () => {
                   </span>
                   </summary>
                   <ul className="ml-4 mt-2 space-y-2 text-sm">
-                    <li><Link to="/productos/0ce0a0e5-3897-4859-b8e2-eb1307eca211" className={styles.menuitem}>DRAC SPORT</Link></li>
                     <li><Link to="/productos/a6028cec-3718-4e4f-90b0-44cecbe430d9" className={styles.menuitem}>Under Armour</Link></li>
                     <li><Link to="/productos/53ab37e4-9ab8-4286-9f47-0641feb624b0" className={styles.menuitem}>GymShark</Link></li>
-                    <li><Link to="/productos/55e68c28-2833-4bc6-a3e4-390f92436061" className={styles.menuitem}>Ropa Hombre</Link></li>
                   </ul>
                 </details>
               </li>
