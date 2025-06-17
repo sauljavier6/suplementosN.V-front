@@ -40,7 +40,7 @@ export default function ProductCard({ product }) {
       </h2>
 
       <p className="text-sm mb-3">
-        <span className="font-semibold text-black">Stock:{product.total_stock}</span>{" "}
+        <span className="font-semibold text-black">Stock:</span>{" "}
         {product.total_stock > 0 ? (
           <span className="text-green-600 font-semibold">Disponible</span>
         ) : (
