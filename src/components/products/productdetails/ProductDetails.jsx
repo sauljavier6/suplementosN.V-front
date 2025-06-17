@@ -61,8 +61,8 @@ import { useParams } from "react-router-dom";
             )}
 
             {/* Miniaturas */}
-            <div className="overflow-x-auto">
-              <div className="flex gap-4 mt-4 w-max">
+            <div className="overflow-x-auto md:overflow-visible">
+              <div className="flex gap-4 mt-4 w-max md:w-full">
                 {images.map((imgUrl, i) => (
                   <img
                     key={i}
@@ -78,6 +78,7 @@ import { useParams } from "react-router-dom";
                 ))}
               </div>
             </div>
+
             </div>
 
 
