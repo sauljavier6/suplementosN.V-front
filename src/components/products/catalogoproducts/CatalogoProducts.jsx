@@ -56,6 +56,7 @@ function CatalogoBanner() {
       fetch(`${import.meta.env.VITE_API_URL}/catalogo/${categoria}?page=${page}&limit=12`)
         .then((res) => res.json())
         .then((data) => {
+          console.log('categoria',data)
           setProducts(data.items);
           setTotalPages(data.totalPages);
           setIsLoading(false);
@@ -69,6 +70,7 @@ function CatalogoBanner() {
       fetch(`${import.meta.env.VITE_API_URL}/busqueda/${busqueda}?page=${page}&limit=12`)
         .then((res) => res.json())
         .then((data) => {
+          console.log('categoria',data)
           setProducts(data.items);
           setTotalPages(data.totalPages);
           setIsLoading(false);
@@ -102,10 +104,8 @@ function CatalogoBanner() {
               </button>
               {openMenu === "hombre" && (
               <div className="ml-6 mt-1 flex flex-col gap-2 text-sm text-gray-600">
-                <Link to="/productos/0ce0a0e5-3897-4859-b8e2-eb1307eca211" className="hover:text-blue-600">DRAC SPORT</Link>
                 <Link to="/productos/a6028cec-3718-4e4f-90b0-44cecbe430d9" className="hover:text-blue-600">Under Armour</Link>
                 <Link to="/productos/53ab37e4-9ab8-4286-9f47-0641feb624b0" className="hover:text-blue-600">GymShark</Link>
-                <Link to="/productos/55e68c28-2833-4bc6-a3e4-390f92436061" className="hover:text-blue-600">Ropa Hombre</Link>
               </div>
               )}
             </div>
@@ -165,7 +165,7 @@ function CatalogoBanner() {
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {products.map((product) => (
+                {products?.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
               </div>

@@ -50,7 +50,8 @@ function CatalogoProducts() {
       try {
         const res = await fetch(`${import.meta.env.VITE_API_URL}/productos`, {cache: 'no-store'});
         const data = await res.json();
-        setProducts(data.items);
+        console.log(data)
+        setProducts(data);
       } catch (error) {
         console.error("Error al obtener productos:", error);
       } finally {
@@ -88,7 +89,7 @@ function CatalogoProducts() {
 
         <div className="w-full p-2">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {products.map((product) => (
+            {products?.map((product) => (
                 <ProductCard key={product.id} product={product} />
             ))}
             </div>

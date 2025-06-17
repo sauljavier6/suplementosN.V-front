@@ -39,9 +39,15 @@ export default function ProductCard({ product }) {
         {product.item_name}
       </h2>
 
-      <p className="text-sm text-black mb-3">
-        <span className="font-semibold text-black">Color:</span> {product.color}
+      <p className="text-sm mb-3">
+        <span className="font-semibold text-black">Stock:{product.total_stock}</span>{" "}
+        {product.total_stock > 0 ? (
+          <span className="text-green-600 font-semibold">Disponible</span>
+        ) : (
+          <span className="text-red-600 font-semibold">Agotado</span>
+        )}
       </p>
+
 
       <button
         onClick={(e) => {

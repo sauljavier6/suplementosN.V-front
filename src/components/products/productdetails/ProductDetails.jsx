@@ -61,20 +61,22 @@ import { useParams } from "react-router-dom";
             )}
 
             {/* Miniaturas */}
-            <div className="flex gap-4 mt-4">
-              {images.map((imgUrl, i) => (
-                <img
-                  key={i}
-                  src={imgUrl}
-                  alt={`Miniatura ${i + 1}`}
-                  width={100}
-                  height={100}
-                  className={`rounded-lg border cursor-pointer hover:opacity-80 ${
-                    imgUrl === mainImage ? "ring-2 ring-blue-500" : ""
-                  }`}
-                  onClick={() => setMainImage(imgUrl)}
-                />
-              ))}
+            <div className="overflow-x-auto">
+              <div className="flex gap-4 mt-4 w-max">
+                {images.map((imgUrl, i) => (
+                  <img
+                    key={i}
+                    src={imgUrl}
+                    alt={`Miniatura ${i + 1}`}
+                    width={100}
+                    height={100}
+                    className={`rounded-lg border cursor-pointer hover:opacity-80 shrink-0 ${
+                      imgUrl === mainImage ? "ring-2 ring-blue-500" : ""
+                    }`}
+                    onClick={() => setMainImage(imgUrl)}
+                  />
+                ))}
+              </div>
             </div>
             </div>
 
