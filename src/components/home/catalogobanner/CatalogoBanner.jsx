@@ -100,7 +100,7 @@ function CatalogoProducts() {
         >
           {/* Grid para pantallas chicas, flex solo en md hacia arriba */}
           <div className="grid grid-cols-3 gap-2 sm:flex">
-            {marcas.map((marca) => (
+            {marcas?.map((marca) => (
               <img
                 key={marca.Id}
                 src={marca.Imagen}

@@ -45,51 +45,123 @@ function CatalogoBanner() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [openMenu, setOpenMenu] = useState(null);
+  const [cursor, setCursor] = useState(null);
+  const [color, setColor] = useState(null);
+  const [talla, setTalla] = useState(null);
+
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
   useEffect(() => {
+  setPage(1);
+  }, [categoria, talla, color]);
+
+ 
+  useEffect(() => {
       if (!categoria) return;
 
-      fetch(`${import.meta.env.VITE_API_URL}/catalogo/${categoria}?page=${page}&limit=12`)
+      fetch(`${import.meta.env.VITE_API_URL}/catalogo/${categoria}?page=${page}&limit=30${cursor ? `&cursor=${cursor}` : ''}${talla ? `&talla=${talla}` : ''}${color ? `&color=${color}` : ''}`)
         .then((res) => res.json())
         .then((data) => {
           console.log('categoria',data)
           setProducts(data.items);
           setTotalPages(data.totalPages);
+          setCursor(data.cursor);
           setIsLoading(false);
         })
         .catch((error) => console.error("Error al obtener producto:", error));
-    }, [categoria, page]);
+    }, [categoria, page, talla, color]);
 
   useEffect(() => {
       if (!busqueda) return;
 
-      fetch(`${import.meta.env.VITE_API_URL}/busqueda/${busqueda}?page=${page}&limit=12`)
+      fetch(`${import.meta.env.VITE_API_URL}/busqueda/${busqueda}?page=${page}&limit=30${cursor ? `&cursor=${cursor}` : ''}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log('categoria',data)
           setProducts(data.items);
           setTotalPages(data.totalPages);
+          setCursor(data.cursor);
           setIsLoading(false);
         })
         .catch((error) => console.error("Error al obtener producto:", error));
-    }, [busqueda]);
+    }, [busqueda, page]);
 
   const toggleMenu = (menuName) => {
     setOpenMenu(openMenu === menuName ? null : menuName);
   };
+
+  console.log('talla', talla);
     
 
   if (!isClient || isLoading) {
     return <h2 className="text-2xl text-center p-10">Cargando las mejores ofertas...</h2>;
   }
-  
+
+  const disable = ['53ab37e4-9ab8-4286-9f47-0641feb624b0', 'a6028cec-3718-4e4f-90b0-44cecbe430d9'].includes(categoria) ? false : true;
+
+  console.log('disable', disable);
   return (   
     <div>
         <div className="flex flex-col min-h-200 md:flex-row w-full gap-4">
+        {/* Filtros móviles */}
+        <div className="block md:hidden mt-4 px-4 py-3 bg-white border-t border-gray-200">
+          <h3 className="text-lg font-semibold text-blue-800 mb-3">Filtrar</h3>
+
+          {/* Tallas */}
+          <div className={`${disable ? "opacity-50 pointer-events-none" : ""} mb-4`}>
+            <h4 className="text-blue-800 font-semibold mb-2 text-sm">Tallas</h4>
+            <div className="flex flex-wrap gap-2 text-xs text-gray-700">
+              {['S', 'M', 'L', 'XL'].map((tallaItem) => (
+                <button
+                  key={tallaItem}
+                  onClick={() => {
+                    if (!disable) {
+                      setTalla(talla === tallaItem ? null : tallaItem);
+                    } else {
+                      setTalla(null);
+                    }
+                  }}
+                  disabled={disable}
+                  className={`px-2 py-1 border rounded transition
+                    ${talla === tallaItem ? 'bg-blue-500 text-white border-blue-500' : 'border-gray-300 hover:bg-blue-100 text-gray-700'}
+                    ${disable ? 'cursor-not-allowed' : ''}
+                  `}
+                >
+                  {tallaItem}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Colores */}
+          <div className={`${disable ? "opacity-50 pointer-events-none" : ""}`}>
+            <h4 className="text-blue-800 font-semibold mb-2 text-sm">Colores</h4>
+            <div className="flex flex-wrap gap-2 text-xs">
+              {['GREY', 'PURPLE', 'PINK', 'GREEN', 'YELLOW', 'ORANGE', 'RED', 'BLUE'].map((colorItem) => (
+                <button
+                  key={colorItem}
+                  onClick={() => {
+                    if (!disable) {
+                      setColor(colorItem === color ? null : colorItem);
+                    } else {
+                      setColor(null);
+                    }
+                  }}
+                  disabled={disable}
+                  className={`w-7 h-7 rounded-full border-2 transition
+                    ${color === colorItem ? 'ring-2 ring-blue-500 border-blue-500' : 'border-gray-300'}
+                    ${disable ? 'cursor-not-allowed opacity-50' : ''}
+                  `}
+                  style={{ backgroundColor: colorItem.toLowerCase() }}
+                  title={colorItem}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* Sidebar */}
         <div className="hidden md:block md:w-1/4 bg-gradient-to-b from-white p-6 shadow-lg border border-gray-100">
           <h2 className="text-2xl font-extrabold mb-6 text-blue-800 tracking-wide">Menú</h2>
@@ -154,12 +226,68 @@ function CatalogoBanner() {
               )}
             </div>
           </nav>
+
+          <div className="mt-6">
+            {/* Tallas */}
+            <div className={`${disable ? "opacity-50 pointer-events-none" : ""}`}>
+              <h3 className="text-blue-800 font-semibold mb-2">Tallas</h3>
+              <div className="flex flex-wrap gap-2 text-sm text-gray-700">
+                {['S', 'M', 'L', 'XL'].map((tallaItem) => (
+                  <button
+                    key={tallaItem}
+                    onClick={() => {
+                      if (!disable) {
+                        setTalla(talla === tallaItem ? null : tallaItem);
+                      } else {
+                        setTalla(null);
+                      }
+                    }}
+                    disabled={disable}
+                    className={`px-3 py-1 border rounded transition
+                      ${talla === tallaItem ? 'bg-blue-500 text-white border-blue-500' : 'border-gray-300 hover:bg-blue-100 text-gray-700'}
+                      ${disable ? 'cursor-not-allowed' : ''}
+                    `}
+                  >
+                    {tallaItem}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+
+            {/* Colores */}
+            <div className={`${disable ? "opacity-50 pointer-events-none" : ""}`}>
+              <h3 className="text-blue-800 font-semibold mb-2">Colores</h3>
+              <div className="flex flex-wrap gap-2 text-sm">
+                {['GREY', 'PURPLE', 'PINK', 'GREEN', 'YELLOW', 'ORANGE', 'RED', 'BLUE'].map((colorItem) => (
+                  <button
+                    key={colorItem}
+                    onClick={() => {
+                      if (!disable) {
+                        setColor(colorItem === color ? null : colorItem);
+                      } else {
+                        setColor(null);
+                      }
+                    }}
+                    disabled={disable}
+                    className={`w-8 h-8 rounded-full border-2 transition
+                      ${color === colorItem ? 'ring-2 ring-blue-500 border-blue-500' : 'border-gray-300'}
+                      ${disable ? 'cursor-not-allowed opacity-50' : ''}
+                    `}
+                    style={{ backgroundColor: colorItem.toLowerCase() }}
+                    title={colorItem}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
         </div>
 
 
           {/* Catálogo */}
           <div className="md:w-3/4 w-full p-2">
-            {products.length === 0 ? (
+            {products?.length === 0 ? (
               <div className="text-center text-gray-500 text-lg py-8">
                 No hay productos disponibles en esta categoría.
               </div>
@@ -193,22 +321,33 @@ function CatalogoBanner() {
           </button>
 
 
-          {/* Renderizar números de página */}
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
-            <button
-              key={num}
-              onClick={() => setPage(num)}
-              className={`px-3 py-1 rounded ${
-                page === num ? "bg-blue-500 text-white" : "bg-gray-100"
-              }`}
-            >
-              {num}
-            </button>
-          ))}
+          {(() => {
+            const maxButtons = 5;
+            let start = Math.max(1, page - Math.floor(maxButtons / 2));
+            let end = start + maxButtons - 1;
+
+            if (end > totalPages) {
+              end = totalPages;
+              start = Math.max(1, end - maxButtons + 1);
+            }
+
+            return Array.from({ length: end - start + 1 }, (_, i) => start + i).map((num) => (
+              <button
+                key={num}
+                onClick={() => setPage(num)}
+                className={`px-3 py-1 rounded ${
+                  page === num ? "bg-blue-500 text-white" : "bg-gray-100"
+                }`}
+              >
+                {num}
+              </button>
+            ));
+          })()}
+
 
           <button
-            onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
-            disabled={page === totalPages}
+            onClick={() => setPage((prev) => Math.min(prev + 1))}
+            disabled={!cursor}
             className="px-3 py-1 rounded disabled:opacity-50 hover:bg-gray-300"
           >
             <img src="/icons/flecha-negra.png" alt="Flecha derecha" className="w-4 h-4 rotate-180" />
@@ -216,7 +355,7 @@ function CatalogoBanner() {
 
           <button
             onClick={() => setPage(totalPages)}
-            disabled={page === totalPages}
+            disabled={!cursor}
             className="px-3 py-1 rounded disabled:opacity-50 hover:bg-gray-300"
           >
             <img src="/icons/flechas-negras.png" alt="Flecha derecha" className="w-4 h-4 rotate-180" />
