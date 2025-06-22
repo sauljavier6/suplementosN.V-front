@@ -46,7 +46,6 @@ function CatalogoBanner() {
   const [totalPages, setTotalPages] = useState(1);
   const [openMenu, setOpenMenu] = useState(null);
   const [cursor, setCursor] = useState(null);
-  const [color, setColor] = useState(null);
   const [talla, setTalla] = useState(null);
 
 
@@ -56,13 +55,13 @@ function CatalogoBanner() {
 
   useEffect(() => {
   setPage(1);
-  }, [categoria, talla, color]);
+  }, [categoria, talla]);
 
  
   useEffect(() => {
       if (!categoria) return;
 
-      fetch(`${import.meta.env.VITE_API_URL}/catalogo/${categoria}?page=${page}&limit=30${cursor ? `&cursor=${cursor}` : ''}${talla ? `&talla=${talla}` : ''}${color ? `&color=${color}` : ''}`)
+      fetch(`${import.meta.env.VITE_API_URL}/catalogo/${categoria}?page=${page}&limit=30${cursor ? `&cursor=${cursor}` : ''}${talla ? `&talla=${talla}` : ''}`)
         .then((res) => res.json())
         .then((data) => {
           console.log('categoria',data)
@@ -72,7 +71,7 @@ function CatalogoBanner() {
           setIsLoading(false);
         })
         .catch((error) => console.error("Error al obtener producto:", error));
-    }, [categoria, page, talla, color]);
+    }, [categoria, page, talla]);
 
   useEffect(() => {
       if (!busqueda) return;
@@ -131,32 +130,6 @@ function CatalogoBanner() {
                 >
                   {tallaItem}
                 </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Colores */}
-          <div className={`${disable ? "opacity-50 pointer-events-none" : ""}`}>
-            <h4 className="text-blue-800 font-semibold mb-2 text-sm">Colores</h4>
-            <div className="flex flex-wrap gap-2 text-xs">
-              {['GREY', 'PURPLE', 'PINK', 'GREEN', 'YELLOW', 'ORANGE', 'RED', 'BLUE'].map((colorItem) => (
-                <button
-                  key={colorItem}
-                  onClick={() => {
-                    if (!disable) {
-                      setColor(colorItem === color ? null : colorItem);
-                    } else {
-                      setColor(null);
-                    }
-                  }}
-                  disabled={disable}
-                  className={`w-7 h-7 rounded-full border-2 transition
-                    ${color === colorItem ? 'ring-2 ring-blue-500 border-blue-500' : 'border-gray-300'}
-                    ${disable ? 'cursor-not-allowed opacity-50' : ''}
-                  `}
-                  style={{ backgroundColor: colorItem.toLowerCase() }}
-                  title={colorItem}
-                />
               ))}
             </div>
           </div>
@@ -250,33 +223,6 @@ function CatalogoBanner() {
                   >
                     {tallaItem}
                   </button>
-                ))}
-              </div>
-            </div>
-
-
-            {/* Colores */}
-            <div className={`${disable ? "opacity-50 pointer-events-none" : ""}`}>
-              <h3 className="text-blue-800 font-semibold mb-2">Colores</h3>
-              <div className="flex flex-wrap gap-2 text-sm">
-                {['GREY', 'PURPLE', 'PINK', 'GREEN', 'YELLOW', 'ORANGE', 'RED', 'BLUE'].map((colorItem) => (
-                  <button
-                    key={colorItem}
-                    onClick={() => {
-                      if (!disable) {
-                        setColor(colorItem === color ? null : colorItem);
-                      } else {
-                        setColor(null);
-                      }
-                    }}
-                    disabled={disable}
-                    className={`w-8 h-8 rounded-full border-2 transition
-                      ${color === colorItem ? 'ring-2 ring-blue-500 border-blue-500' : 'border-gray-300'}
-                      ${disable ? 'cursor-not-allowed opacity-50' : ''}
-                    `}
-                    style={{ backgroundColor: colorItem.toLowerCase() }}
-                    title={colorItem}
-                  />
                 ))}
               </div>
             </div>
