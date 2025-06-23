@@ -61,7 +61,7 @@ function CatalogoBanner() {
   useEffect(() => {
       if (!categoria) return;
 
-      fetch(`${import.meta.env.VITE_API_URL}/catalogo/${categoria}?page=${page}&limit=30${cursor ? `&cursor=${cursor}` : ''}${talla ? `&talla=${talla}` : ''}`)
+      fetch(`${import.meta.env.VITE_API_URL}/catalogo/${categoria}?page=${page}&limit=32${cursor ? `&cursor=${cursor}` : ''}${talla ? `&talla=${talla}` : ''}`)
         .then((res) => res.json())
         .then((data) => {
           console.log('categoria',data)
@@ -91,16 +91,12 @@ function CatalogoBanner() {
     setOpenMenu(openMenu === menuName ? null : menuName);
   };
 
-  console.log('talla', talla);
-    
-
   if (!isClient || isLoading) {
     return <h2 className="text-2xl text-center p-10">Cargando las mejores ofertas...</h2>;
   }
 
   const disable = ['53ab37e4-9ab8-4286-9f47-0641feb624b0', 'a6028cec-3718-4e4f-90b0-44cecbe430d9'].includes(categoria) ? false : true;
 
-  console.log('disable', disable);
   return (   
     <div>
         <div className="flex flex-col min-h-200 md:flex-row w-full gap-4">
@@ -247,26 +243,26 @@ function CatalogoBanner() {
           </div>
         </div>
 
-
-        {/* paginacion */}
         <div className="flex flex-wrap justify-center sm:justify-end sm:pr-8 mr-0 sm:mr-5 gap-2">
+          {/* Ir a la primera página */}
           <button
             onClick={() => setPage(1)}
             disabled={page === 1}
             className="px-3 py-1 rounded disabled:opacity-50 hover:bg-gray-300"
           >
-            <img src="/icons/flechas-negras.png" alt="Flecha derecha" className="w-4 h-4" />
+            <img src="/icons/flechas-negras.png" alt="Ir al inicio" className="w-4 h-4" />
           </button>
 
+          {/* Página anterior */}
           <button
             onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
             disabled={page === 1}
             className="px-3 py-1 rounded disabled:opacity-50 hover:bg-gray-300"
           >
-            <img src="/icons/flecha-negra.png" alt="Flecha izquierda" className="w-4 h-4" />
+            <img src="/icons/flecha-negra.png" alt="Anterior" className="w-4 h-4" />
           </button>
 
-
+          {/* Números de página */}
           {(() => {
             const maxButtons = 5;
             let start = Math.max(1, page - Math.floor(maxButtons / 2));
@@ -290,21 +286,22 @@ function CatalogoBanner() {
             ));
           })()}
 
-
+          {/* Página siguiente */}
           <button
-            onClick={() => setPage((prev) => Math.min(prev + 1))}
-            disabled={!cursor}
+            onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={page === totalPages}
             className="px-3 py-1 rounded disabled:opacity-50 hover:bg-gray-300"
           >
-            <img src="/icons/flecha-negra.png" alt="Flecha derecha" className="w-4 h-4 rotate-180" />
+            <img src="/icons/flecha-negra.png" alt="Siguiente" className="w-4 h-4 rotate-180" />
           </button>
 
+          {/* Ir a la última página */}
           <button
             onClick={() => setPage(totalPages)}
-            disabled={!cursor}
+            disabled={page === totalPages}
             className="px-3 py-1 rounded disabled:opacity-50 hover:bg-gray-300"
           >
-            <img src="/icons/flechas-negras.png" alt="Flecha derecha" className="w-4 h-4 rotate-180" />
+            <img src="/icons/flechas-negras.png" alt="Ir al final" className="w-4 h-4 rotate-180" />
           </button>
         </div>
 
