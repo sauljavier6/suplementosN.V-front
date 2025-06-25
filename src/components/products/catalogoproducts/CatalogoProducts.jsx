@@ -45,7 +45,6 @@ function CatalogoBanner() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [openMenu, setOpenMenu] = useState(null);
-  const [cursor, setCursor] = useState(null);
   const [talla, setTalla] = useState(null);
 
 
@@ -61,13 +60,11 @@ function CatalogoBanner() {
   useEffect(() => {
       if (!categoria) return;
 
-      fetch(`${import.meta.env.VITE_API_URL}/catalogo/${categoria}?page=${page}&limit=32${cursor ? `&cursor=${cursor}` : ''}${talla ? `&talla=${talla}` : ''}`)
+      fetch(`${import.meta.env.VITE_API_URL}/catalogo/${categoria}?page=${page}&limit=32${talla ? `&talla=${talla}` : ''}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log('categoria',data)
           setProducts(data.items);
           setTotalPages(data.totalPages);
-          setCursor(data.cursor);
           setIsLoading(false);
         })
         .catch((error) => console.error("Error al obtener producto:", error));
@@ -76,12 +73,11 @@ function CatalogoBanner() {
   useEffect(() => {
       if (!busqueda) return;
 
-      fetch(`${import.meta.env.VITE_API_URL}/busqueda/${busqueda}?page=${page}&limit=30${cursor ? `&cursor=${cursor}` : ''}`)
+      fetch(`${import.meta.env.VITE_API_URL}/busqueda/${busqueda}?page=${page}&limit=32`)
         .then((res) => res.json())
         .then((data) => {
           setProducts(data.items);
           setTotalPages(data.totalPages);
-          setCursor(data.cursor);
           setIsLoading(false);
         })
         .catch((error) => console.error("Error al obtener producto:", error));
