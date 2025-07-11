@@ -38,6 +38,9 @@ import { useParams } from "react-router-dom";
       }
     }, [images]);
 
+    const suplementos = ['ec5d1aa5-d230-41aa-a7dc-fade78b0a441', '061950c4-73f1-410a-95f9-22a7a5f5558d', 'e6f0b7cf-7aef-4892-929c-bda5b1009e0a', 'deb95bec-5df4-4e5b-99a8-ef6243c3a010', 'fe41ea76-e1c0-4b0a-9af6-561102ad4490', 
+  '1907451b-4a87-4b53-875b-79b8b7735ed5', 'a96452d8-71af-4bc1-8cc5-c1c9950d9639', '441a656e-f89d-458f-8444-cfd965d1d7b2', '97d25b2d-71b4-11ea-8d93-0603130a05b8', '97d25b14-71b4-11ea-8d93-0603130a05b8'];
+
 
     if (!product) {
       return <p className="text-center mt-10">Loading products...</p>;
@@ -93,7 +96,15 @@ import { useParams } from "react-router-dom";
                 <div key={i} className="mb-4 p-3 border border-gray-200 rounded-md shadow-sm bg-white">
                   <div className="flex justify-between items-center gap-2">
                     <p className="font-semibold text-gray-800">
-                      Talla: {variant.option1_value }
+                      {
+                        variant.option1_value && (
+                          <p>
+                            {suplementos.includes(product.category_id)
+                              ? 'Sabor: ' + variant.option1_value
+                              : 'Talla: ' + variant.option1_value}
+                          </p>
+                        )
+                      }
                     </p>
                     <p className="text-sm text-gray-600">
                       Stock: <span className="font-medium text-black">{variant.total_stock ?? "No definido"}</span>

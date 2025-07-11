@@ -131,14 +131,14 @@ const AppLayout = () => {
                     <p className={styles.menuitem}>Mujer</p>
                     <img src="/icons/flechasinfondo.png" alt="flechasinfondo" className="w-4 h-4" />
                   </div>
-                  <ul className="absolute left-0 hidden group-hover:block bg-gray-800 shadow-lg rounded-lg w-40 z-10">
+                  <ul className="absolute left-0 hidden group-hover:block bg-gray-800 shadow-lg rounded-lg w-45 z-10">
                     <li>
-                      <Link to="/productos/53ab37e4-9ab8-4286-9f47-0641feb624b0" className={`${styles.menuitem} block px-4 py-2 hover:bg-gray-100 rounded-lg`}>
+                      <Link to="/productos/a9aa671a-62ab-4312-bb84-093ee4a7cf1d" className={`${styles.menuitem} block px-4 py-2 hover:bg-gray-100 rounded-lg`}>
                         GymShark
                       </Link>
                     </li>
                     <li>
-                      <Link to="/productos/a6028cec-3718-4e4f-90b0-44cecbe430d9" className={`${styles.menuitem} block px-4 py-2 hover:bg-gray-100 rounded-lg`}>
+                      <Link to="/productos/e49d2aa4-394a-4072-8ebc-f800265bf497" className={`${styles.menuitem} block px-4 py-2 hover:bg-gray-100 rounded-lg`}>
                         Under Armour
                       </Link>
                     </li>
@@ -197,7 +197,7 @@ const AppLayout = () => {
                   </li>
                   <li>
                     <Link to="/productos/97d25b2d-71b4-11ea-8d93-0603130a05b8" className={`${styles.menuitem} block px-4 py-2 hover:bg-gray-100 rounded-lg`}>
-                      Prewokr-Out
+                      Prework-Out
                     </Link>
                   </li>
                   <li>
@@ -301,8 +301,8 @@ const AppLayout = () => {
                   </span>
                   </summary>
                   <ul className="ml-4 mt-2 space-y-2 text-sm">
-                    <li><Link to="/productos/53ab37e4-9ab8-4286-9f47-0641feb624b0" className={styles.menuitem}>GymShark</Link></li>
-                    <li><Link to="/productos/a6028cec-3718-4e4f-90b0-44cecbe430d9" className={styles.menuitem}>Under Armour</Link></li>
+                    <li><Link to="/productos/a9aa671a-62ab-4312-bb84-093ee4a7cf1d" className={styles.menuitem}>GymShark</Link></li>
+                    <li><Link to="/productos/e49d2aa4-394a-4072-8ebc-f800265bf497" className={styles.menuitem}>Under Armour</Link></li>
                   </ul>
                 </details>
               </li>
@@ -338,7 +338,7 @@ const AppLayout = () => {
                     <li><Link to="/productos/1907451b-4a87-4b53-875b-79b8b7735ed5" className={styles.menuitem}>Creatina</Link></li>
                     <li><Link to="/productos/a96452d8-71af-4bc1-8cc5-c1c9950d9639" className={styles.menuitem}>Termogénicos</Link></li>
                     <li><Link to="/productos/441a656e-f89d-458f-8444-cfd965d1d7b2" className={styles.menuitem}>Proteínas</Link></li>
-                    <li><Link to="/productos/97d25b2d-71b4-11ea-8d93-0603130a05b8" className={styles.menuitem}>Pre Work-Out</Link></li>
+                    <li><Link to="/productos/97d25b2d-71b4-11ea-8d93-0603130a05b8" className={styles.menuitem}>Prework-Out</Link></li>
                     <li><Link to="/productos/97d25b14-71b4-11ea-8d93-0603130a05b8" className={styles.menuitem}>BCAA / Aminos</Link></li>
                   </ul>
                 </details>

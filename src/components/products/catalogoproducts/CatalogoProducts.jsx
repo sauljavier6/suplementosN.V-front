@@ -38,7 +38,6 @@ const marcas = [
 
 
 function CatalogoBanner() {
-  const [isClient, setIsClient] = useState(false);
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { categoria, busqueda } = useParams();
@@ -47,13 +46,11 @@ function CatalogoBanner() {
   const [openMenu, setOpenMenu] = useState(null);
   const [talla, setTalla] = useState(null);
 
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  console.log('products', products)
 
   useEffect(() => {
   setPage(1);
+  setIsLoading(true)
   }, [categoria, talla]);
 
  
@@ -87,12 +84,9 @@ function CatalogoBanner() {
     setOpenMenu(openMenu === menuName ? null : menuName);
   };
 
-  if (!isClient || isLoading) {
-    return <h2 className="text-2xl text-center p-10">Cargando las mejores ofertas...</h2>;
-  }
-
-  const disable = ['53ab37e4-9ab8-4286-9f47-0641feb624b0', 'a6028cec-3718-4e4f-90b0-44cecbe430d9'].includes(categoria) ? false : true;
-
+  const disable = ['53ab37e4-9ab8-4286-9f47-0641feb624b0', 'a6028cec-3718-4e4f-90b0-44cecbe430d9', 'a9aa671a-62ab-4312-bb84-093ee4a7cf1d', 'e49d2aa4-394a-4072-8ebc-f800265bf497'].includes(categoria) ? false : true;
+  
+  
   return (   
     <div>
         <div className="flex flex-col min-h-200 md:flex-row w-full gap-4">
@@ -157,8 +151,8 @@ function CatalogoBanner() {
               </button>
               {openMenu === "mujer" && (
               <div className="ml-6 mt-1 flex flex-col gap-2 text-sm text-gray-600">
-                <Link to="/productos/53ab37e4-9ab8-4286-9f47-0641feb624b0" className="hover:text-blue-600">GymShark</Link>
-                <Link to="/productos/a6028cec-3718-4e4f-90b0-44cecbe430d9" className="hover:text-blue-600">Under Armour</Link>
+                <Link to="/productos/a9aa671a-62ab-4312-bb84-093ee4a7cf1d" className="hover:text-blue-600">GymShark</Link>
+                <Link to="/productos/e49d2aa4-394a-4072-8ebc-f800265bf497" className="hover:text-blue-600">Under Armour</Link>
               </div>
               )}
             </div>
@@ -185,7 +179,7 @@ function CatalogoBanner() {
                 <Link to="/productos/1907451b-4a87-4b53-875b-79b8b7735ed5" className="hover:text-blue-600">Creatina</Link>
                 <Link to="/productos/a96452d8-71af-4bc1-8cc5-c1c9950d9639" className="hover:text-blue-600">Termogenicos</Link>
                 <Link to="/productos/441a656e-f89d-458f-8444-cfd965d1d7b2" className="hover:text-blue-600">Protreinas</Link>
-                <Link to="/productos/97d25b2d-71b4-11ea-8d93-0603130a05b8" className="hover:text-blue-600">Prewokr-Out</Link>
+                <Link to="/productos/97d25b2d-71b4-11ea-8d93-0603130a05b8" className="hover:text-blue-600">Prework-Out</Link>
                 <Link to="/productos/97d25b14-71b4-11ea-8d93-0603130a05b8" className="hover:text-blue-600">Bcaa/Aminos</Link>
               </div>
               )}
@@ -225,13 +219,17 @@ function CatalogoBanner() {
 
           {/* Catálogo */}
           <div className="md:w-3/4 w-full p-2">
-            {products?.length === 0 ? (
+            {isLoading ? (
+              <div className="text-center text-gray-500 text-lg py-8">
+                Buscando productos...
+              </div>
+            ) : products?.length === 0 ? (
               <div className="text-center text-gray-500 text-lg py-8">
                 No hay productos disponibles en esta categoría.
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {products?.map((product) => (
+                {products.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
               </div>
