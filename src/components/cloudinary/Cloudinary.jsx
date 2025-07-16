@@ -12,7 +12,7 @@ const Cloudinary = () => {
 
   const fetchImages = async (folder) => {
     try {
-      const res = await fetch(`http://localhost:4000/cloudinary/images/${encodeURIComponent(folder)}`);
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/cloudinary/images/${encodeURIComponent(folder)}`);
       if (!res.ok) throw new Error("Error al obtener imágenes");
       const images = await res.json();
       console.log('images',images)
@@ -67,7 +67,7 @@ const Cloudinary = () => {
   const handleDeleteImages = async () => {
     try {
       for (let img of uploadedUrls) {
-        await fetch("http://localhost:4000/delete-image", {
+        await fetch(`${import.meta.env.VITE_BACKEND_URL}/delete-image`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ public_id: img.public_id }),
@@ -84,7 +84,7 @@ const Cloudinary = () => {
 
   const handleDeleteOne = async (public_id) => {
     try {
-      await fetch("http://localhost:4000/delete-image", {
+      await fetch(`${import.meta.env.VITE_BACKEND_URL}/delete-image`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ public_id }),
