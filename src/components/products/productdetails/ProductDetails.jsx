@@ -23,7 +23,8 @@ import { useParams } from "react-router-dom";
         .catch((error) => console.error("Error al obtener producto:", error));
     }, [id]);
     
-    const cleanName = product?.item_name ? product.item_name.split("/")[0] : "";
+    const cleanName = product?.item_name ? product.item_name.split(/[\/&]/)[0] : "";
+    
 
     const images = useMemo(() => {
       if (!cleanName) return [];

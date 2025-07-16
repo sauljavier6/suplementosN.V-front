@@ -6,7 +6,7 @@ export default function ProductCard({ product }) {
   const [imageSrc, setImageSrc] = useState(product.image_url);
 
   useEffect(() => {
-    const cleanName = product?.item_name?.split("/")[0];
+    const cleanName = product?.item_name ? product.item_name.split(/[\/&]/)[0] : "";
     if (!cleanName) return;
 
     const cloudUrl = `https://res.cloudinary.com/dsrxhrjfu/image/upload/v1/productos/${cleanName}/img1.jpg`;
