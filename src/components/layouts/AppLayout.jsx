@@ -192,7 +192,7 @@ const AppLayout = () => {
                   </li>
                   <li>
                     <Link to="/productos/441a656e-f89d-458f-8444-cfd965d1d7b2" className={`${styles.menuitem} block px-4 py-2 hover:bg-gray-100 rounded-lg`}>
-                      Protreinas
+                      Proteínas
                     </Link>
                   </li>
                   <li>
