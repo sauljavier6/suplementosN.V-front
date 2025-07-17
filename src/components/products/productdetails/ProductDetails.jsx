@@ -31,7 +31,7 @@ export default function ProductDetails() {
     const fetchImages = async () => {
       try {
         const res = await fetch(
-          `${import.meta.env.VITE_API_URL}/cloudinary/images/${encodeURIComponent('Evogen Evofuison')}`
+          `${import.meta.env.VITE_API_URL}/cloudinary/images/${encodeURIComponent(product.item_name)}`
         );
         if (!res.ok) throw new Error("Error al obtener imágenes");
 
