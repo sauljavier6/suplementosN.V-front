@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 export default function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  console.log('product',product)
   const [mainImage, setMainImage] = useState("");
   const [isClient, setIsClient] = useState(false);
   const [images, setImages] = useState([]);
@@ -15,32 +16,33 @@ export default function ProductDetails() {
   useEffect(() => {
     if (!id) return;
 
-    fetch(`${import.meta.env.VITE_API_URL}/productos/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/productos/producto/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log('product', data);
-        setProduct(data);
+        setProduct(data.data);
       })
       .catch((error) => console.error("Error al obtener producto:", error));
   }, [id]);
 
   useEffect(() => {
     if (!product?.item_name) return;
-    console.log('product', product?.item_name);
 
     const fetchImages = async () => {
       try {
+        const cleanName = product?.item_name ? product.item_name.split(/[\/&]/)[0] : "";
+        if (!cleanName) return;
+
         const res = await fetch(
-          `${import.meta.env.VITE_API_URL}/cloudinary/images/${encodeURIComponent(product.item_name)}`
+          `${import.meta.env.VITE_API_URL}/productos/images/${encodeURIComponent(cleanName)}`
         );
+        
         if (!res.ok) throw new Error("Error al obtener imágenes");
 
         const data = await res.json();
-        console.log('images', res);
-
-        setImages(data); // `data` es un array de imágenes
+        console.log('res',data)
+        setImages(data);
         if (data.length > 0) {
-          setMainImage(data[0].secure_url); // ✅ Corrección
+          setMainImage(data[0].secure_url); 
         }
       } catch (err) {
         console.error("Error al obtener imágenes:", err);
@@ -71,7 +73,7 @@ export default function ProductDetails() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Galería de Imágenes */}
         <div className="flex flex-col">
-          {mainImage && (
+          {mainImage && images.length > 0 ? (
             <img
               src={mainImage}
               alt="Imagen principal"
@@ -79,24 +81,42 @@ export default function ProductDetails() {
               height={300}
               className="rounded-lg w-full object-cover border"
             />
+          ) : (
+                <img
+                  src={product.image_url}
+                  alt="Imagen no disponible"
+                  width={300}
+                  height={300}
+                  className="rounded-lg border"
+                />
           )}
 
           {/* Miniaturas */}
           <div className="overflow-x-auto md:overflow-visible">
             <div className="flex gap-4 mt-4 w-max md:w-full">
-              {images.map((img, i) => (
+              {images && images.length > 0 ? (
+                images.map((img, i) => (
+                  <img
+                    key={i}
+                    src={img.secure_url}
+                    alt={`Miniatura ${i + 1}`}
+                    width={100}
+                    height={100}
+                    className={`rounded-lg border cursor-pointer hover:opacity-80 shrink-0 ${
+                      img.secure_url === mainImage ? "ring-2 ring-blue-500" : ""
+                    }`}
+                    onClick={() => setMainImage(img.secure_url)}
+                  />
+                ))
+              ) : (
                 <img
-                  key={i}
-                  src={img.secure_url}
-                  alt={`Miniatura ${i + 1}`}
+                  src={product.image_url}
+                  alt="Imagen no disponible"
                   width={100}
                   height={100}
-                  className={`rounded-lg border cursor-pointer hover:opacity-80 shrink-0 ${
-                    img.secure_url === mainImage ? "ring-2 ring-blue-500" : ""
-                  }`}
-                  onClick={() => setMainImage(img.secure_url)}
+                  className="rounded-lg border"
                 />
-              ))}
+              )}
             </div>
           </div>
         </div>
@@ -108,13 +128,13 @@ export default function ProductDetails() {
 
             <div className="mt-4">
               <div className="flex flex-wrap gap-2">
-                {product?.variants?.map((variant, i) => (
+                {product?.stock?.map((variant, i) => (
                   <div
                     key={i}
                     className="mb-4 p-3 border border-gray-200 rounded-md shadow-sm bg-white"
                   >
                     <div className="flex justify-between items-center gap-2">
-                      <p className="font-semibold text-gray-800">
+                      {<p className="font-semibold text-gray-800">
                         {variant.option1_value && (
                           <span>
                             {suplementos.includes(product.category_id)
@@ -122,17 +142,17 @@ export default function ProductDetails() {
                               : "Talla: " + variant.option1_value}
                           </span>
                         )}
-                      </p>
+                      </p>}
                       <p className="text-sm text-gray-600">
                         Stock:{" "}
                         <span className="font-medium text-black">
-                          {variant.total_stock ?? "No definido"}
+                          {variant.totalVariantStock ?? "No definido"}
                         </span>
                       </p>
                     </div>
                     <p className="mt-1 text-sm text-green-600 font-semibold">
                       Precio: $
-                      {variant.stores[0]?.price.toFixed(2) ?? "No disponible"}
+                      {/*variant.stores[0]?.price.toFixed(2) ?? "No disponible"*/}
                     </p>
                   </div>
                 ))}

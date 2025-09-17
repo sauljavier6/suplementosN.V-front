@@ -41,7 +41,7 @@ const AppLayout = () => {
     if (e.key === "Enter") {
     e.preventDefault();
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/email`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/productos/email`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -216,7 +216,7 @@ const AppLayout = () => {
                     type="text"
                     onBlur={handleBlur}
                     onChange={(e) => setSearchInput(e.target.value)}
-                    onKeyDown={handleKeyDown} // aquí
+                    onKeyDown={handleKeyDown}
                     placeholder="Buscar..."
                     className="border border-gray-100 bg-white text-black rounded px-2 py-1 w-full focus:outline-none focus:ring-0 focus:border-gray-100"
                     autoFocus

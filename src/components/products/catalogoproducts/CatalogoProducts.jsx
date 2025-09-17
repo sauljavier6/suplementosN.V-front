@@ -57,10 +57,11 @@ function CatalogoBanner() {
   useEffect(() => {
       if (!categoria) return;
 
-      fetch(`${import.meta.env.VITE_API_URL}/catalogo/${categoria}?page=${page}&limit=32${talla ? `&talla=${talla}` : ''}`)
+      fetch(`${import.meta.env.VITE_API_URL}/productos/catalogo/${categoria}?page=${page}&limit=32${talla ? `&talla=${talla}` : ''}`)
         .then((res) => res.json())
         .then((data) => {
-          setProducts(data.items);
+          console.log('data',data)
+          setProducts(data.data);
           setTotalPages(data.totalPages);
           setIsLoading(false);
         })
@@ -69,11 +70,13 @@ function CatalogoBanner() {
 
   useEffect(() => {
       if (!busqueda) return;
+      console.log('busqueda',busqueda)
 
-      fetch(`${import.meta.env.VITE_API_URL}/busqueda/${busqueda}?page=${page}&limit=32`)
+
+      fetch(`${import.meta.env.VITE_API_URL}/productos/busqueda/${encodeURIComponent(busqueda)}?page=${page}&limit=32`)
         .then((res) => res.json())
         .then((data) => {
-          setProducts(data.items);
+          setProducts(data.data);
           setTotalPages(data.totalPages);
           setIsLoading(false);
         })

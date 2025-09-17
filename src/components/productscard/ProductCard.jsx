@@ -13,12 +13,11 @@ export default function ProductCard({ product }) {
     const testImage = new Image();
 
     testImage.src = cloudUrl;
-    testImage.onload = () => setImageSrc(cloudUrl); // usar Cloudinary si existe
-    testImage.onerror = () => setImageSrc(product.image_url); // fallback a image_url
+    testImage.onload = () => setImageSrc(cloudUrl);
+    testImage.onerror = () => setImageSrc(product.image_url);
   }, [product]);
 
   const handleDetailsClick = () => {
-    console.log("Detalles del producto:", product);
     navigate(`/detalles/${product.id}`);
   };
 
@@ -41,7 +40,7 @@ export default function ProductCard({ product }) {
 
       <p className="text-sm mb-3">
         <span className="font-semibold text-black">Stock:</span>{" "}
-        {product.total_stock > 0 ? (
+        {product.totalInStock > 0 ? (
           <span className="text-green-600 font-semibold">Disponible</span>
         ) : (
           <span className="text-red-600 font-semibold">Agotado</span>

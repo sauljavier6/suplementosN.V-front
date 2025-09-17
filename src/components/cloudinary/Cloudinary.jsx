@@ -12,7 +12,7 @@ const Cloudinary = () => {
 
   const fetchImages = async (folder) => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/cloudinary/images/${encodeURIComponent(folder)}`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/productos/images/${encodeURIComponent(folder)}`);
       if (!res.ok) throw new Error("Error al obtener imágenes");
       const images = await res.json();
       console.log('images',images)
@@ -61,14 +61,14 @@ const Cloudinary = () => {
 
     setUploadedUrls(urls);
     setLoading(false);
-    fetchImages(folderName); // Actualizar imágenes existentes
+    fetchImages(folderName);
   };
 
   const handleDeleteImages = async () => {
     try {
       for (let img of uploadedUrls) {
-        await fetch(`${import.meta.env.VITE_API_URL}/delete-image`, {
-          method: "POST",
+        await fetch(`${import.meta.env.VITE_API_URL}/productos/deleteimagen`, {
+          method: "DELETE",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ public_id: img.public_id }),
         });
@@ -84,8 +84,8 @@ const Cloudinary = () => {
 
   const handleDeleteOne = async (public_id) => {
     try {
-      await fetch(`${import.meta.env.VITE_API_URL}/delete-image`, {
-        method: "POST",
+      await fetch(`${import.meta.env.VITE_API_URL}/productos/deleteimagen`, {
+        method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ public_id }),
       });

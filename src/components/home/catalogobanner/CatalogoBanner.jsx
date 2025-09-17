@@ -48,10 +48,10 @@ function CatalogoProducts() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/productos`, {cache: 'no-store'});
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/productos/catalogo/`, {cache: 'no-store'});
         const data = await res.json();
         console.log(data)
-        setProducts(data);
+        setProducts(data.data);
       } catch (error) {
         console.error("Error al obtener productos:", error);
       } finally {
