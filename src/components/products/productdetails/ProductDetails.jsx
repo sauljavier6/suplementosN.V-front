@@ -94,8 +94,8 @@ export default function ProductDetails() {
           {/* Miniaturas */}
           <div className="overflow-x-auto md:overflow-visible">
             <div className="flex gap-4 mt-4 w-max md:w-full">
-              {images && images.length > 0 ? (
-                images.map((img, i) => (
+              {images && images?.length > 0 ? (
+                images?.map((img, i) => (
                   <img
                     key={i}
                     src={img.secure_url}
@@ -124,7 +124,7 @@ export default function ProductDetails() {
         {/* Info del producto */}
         <div className="flex flex-col justify-between">
           <div>
-            <h1 className="text-4xl font-bold mb-4">{product.item_name}</h1>
+            <h1 className="text-4xl font-bold mb-4">{product?.item_name}</h1>
 
             <div className="mt-4">
               <div className="flex flex-wrap gap-2">
@@ -152,7 +152,7 @@ export default function ProductDetails() {
                     </div>
                     <p className="mt-1 text-sm text-green-600 font-semibold">
                       Precio: $
-                      {/*variant.stores[0]?.price.toFixed(2) ?? "No disponible"*/}
+                      {variant.default_price.toFixed(2) ?? "No disponible"}
                     </p>
                   </div>
                 ))}
