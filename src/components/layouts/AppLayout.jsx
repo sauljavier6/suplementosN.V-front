@@ -367,71 +367,9 @@ const AppLayout = () => {
         </nav>
       </div>
 
-    <div className={styles.appLayout}>
       <div className="pt-[56px] md:pt-[100px] w-full">
         <Outlet />
       </div>
-
-      <footer className="bg-black text-white">
-      <div className="container mx-auto px-6 py-10 flex flex-col md:flex-row gap-8">
-        <div className="md:w-1/2">
-          <h3 className="text-lg font-semibold mb-4">Nuestras Ubicaciones</h3>
-          <div className="text-sm space-y-2">
-            <p>
-              <span className="font-semibold">Teléfono:</span> +52: 6462781997
-            </p>
-          </div>
-          <div className="text-sm space-y-2 mt-4">
-            <p>
-              <span className="font-semibold">Dirección:</span> 206 Calle sexta, zona centro, Ensenada, Baja california, Mexico
-            </p>
-            <p>
-              <span className="font-semibold">Dirección:</span> Blvd. Gral. Juan Zertuche 937, Valle Dorado, 22890 Ensenada, Baja california, Mexico
-            </p>
-            <p>
-              <span className="font-semibold">Dirección:</span> Av. Diamante 2057, Hidalgo, 22880 Ensenada, Baja california, Mexico
-            </p>
-          </div>
-
-        </div>
-
-        {/* Columna de mapa */}
-        <div className="md:w-1/2 w-full h-60 md:h-44 rounded-lg overflow-hidden shadow-md">
-          <iframe
-            title="Mapa de ubicación"
-            src="https://www.google.com/maps/d/u/0/embed?mid=12zu-u-wFLP80AqhFmDAMPwjnRexPOjg&ehbc=2E312F&noprof=1"
-            width="100%"
-            height="100%"
-            allowFullScreen
-            loading="lazy"
-            className="border-0 w-full h-full"
-          ></iframe>
-        </div>
-      </div>
-      <div className="flex flex-col items-center justify-center bg-black text-center py-4 text-sm text-white gap-4">
-        <p>UNETE Y RECIBE LAS MEJORES OFERTAS</p>
-        <div className="relative w-full max-w-xs">
-          <input
-            type="text"
-            placeholder="Correo"
-            value={email}    
-            onChange={(e) => setEmail(e.target.value)}
-            onKeyDown={handleSubmit}
-            className="w-full border border-white text-white bg-transparent px-4 py-2 pr-10 rounded"
-            autoFocus
-          />
-          <img
-            src="/icons/flechaabajo.png"
-            alt="icon"
-            className="w-5 h-5 absolute top-1/2 right-3 transform -translate-y-1/2 rotate-270"
-          />
-        </div>
-      </div>
-      <div className="flex flex-col items-center justify-center bg-black text-center py-4 text-sm text-white">
-        <p>&copy; 2025 SUPLEMENTOSN.V. Todos los derechos reservados. Powered by <span className="font-semibold">SWS Souls Web Solutions</span>.</p>
-      </div>
-      </footer>
-    </div>
      </>
   );
 };
