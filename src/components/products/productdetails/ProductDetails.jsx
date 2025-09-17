@@ -152,7 +152,7 @@ export default function ProductDetails() {
                     </div>
                     <p className="mt-1 text-sm text-green-600 font-semibold">
                       Precio: $
-                      {variant.default_price.toFixed(2) ?? "No disponible"}
+                      {variant.default_price ?? "No disponible"}
                     </p>
                   </div>
                 ))}
