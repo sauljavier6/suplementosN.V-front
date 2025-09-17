@@ -8,3 +8,14 @@
 .menuitem:hover {
   color: #b0afaf; /* Ejemplo: gris tipo Tailwind text-gray-500 */
 }
+
+/* AppLayout.module.scss */
+.appLayout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* toda la pantalla */
+}
+
+.content {
+  flex: 1; /* ocupa el espacio disponible antes del footer */
+}

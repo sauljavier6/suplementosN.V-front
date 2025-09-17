@@ -60,7 +60,7 @@ const AppLayout = () => {
 
 
   return (
-    <div>
+    <>
       {/*Navbar medios y grandes*/}
       <div className="hidden md:block">
       <nav className="fixed top-0 z-50 w-full bg-black border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -367,7 +367,7 @@ const AppLayout = () => {
         </nav>
       </div>
 
-
+    <div className={styles.appLayout}>
       <div className="pt-[56px] md:pt-[100px] w-full">
         <Outlet />
       </div>
@@ -431,8 +431,8 @@ const AppLayout = () => {
         <p>&copy; 2025 SUPLEMENTOSN.V. Todos los derechos reservados. Powered by <span className="font-semibold">SWS Souls Web Solutions</span>.</p>
       </div>
       </footer>
-
     </div>
+     </>
   );
 };
 
