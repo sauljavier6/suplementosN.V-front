@@ -382,9 +382,6 @@ const AppLayout = () => {
           </div>
           <div className="text-sm space-y-2 mt-4">
             <p>
-              <span className="font-semibold">Dirección:</span> 206 Calle sexta, zona centro, Ensenada, Baja california, Mexico
-            </p>
-            <p>
               <span className="font-semibold">Dirección:</span> Blvd. Gral. Juan Zertuche 937, Valle Dorado, 22890 Ensenada, Baja california, Mexico
             </p>
             <p>
