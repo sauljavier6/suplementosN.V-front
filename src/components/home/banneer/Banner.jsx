@@ -1,14 +1,12 @@
-
 function Banner() {
-  
-  return (   
-  <div className="w-full aspect-[16/11] md:aspect-auto md:h-full overflow-hidden">
-    <img
-      src="/bg/banner.jpg"
-      alt="banner"
-      className="w-full h-full object-cover object-[center_20%]"
-    />
-  </div>
+  return (
+    <div className="w-full h-[115vh] overflow-hidden">
+      <img
+        src="/bg/banner.png"
+        alt="banner"
+        className="w-full h-full object-cover object-center"
+      />
+    </div>
   );
 }
 

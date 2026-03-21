@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Cloudinary from "../../components/cloudinary/Cloudinary";
+import DeleteProduct from "../../components/deleteproduct/DeleteProduct";
 
 // COMPONENTE DE LOGIN
 function Login({ onLogin }) {
@@ -192,6 +193,8 @@ export default function CloudinaryPage() {
           </button>
         </div>
         <Cloudinary />
+
+        <DeleteProduct />
       </div>
     </div>
   );
