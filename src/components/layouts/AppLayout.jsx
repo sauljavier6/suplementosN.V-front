@@ -466,6 +466,89 @@ const AppLayout = () => {
                 </Link>
               </li>
 
+              {/* Suplementos */}
+<li>
+  <details className="group">
+    <summary
+      className={`${styles.menuitem} cursor-pointer flex items-center justify-between`}
+      onClick={(e) => e.stopPropagation()}
+    >
+      Suplementos
+      <span
+        onClick={(e) => {
+          e.stopPropagation();
+          toggleMenuSidebar("suplementos");
+        }}
+      >
+        {open === "suplementos" ? (
+          <img
+            src="/icons/flechasinfondo.png"
+            className="w-4 h-4 rotate-180"
+          />
+        ) : (
+          <img
+            src="/icons/flechasinfondo.png"
+            className="w-4 h-4"
+          />
+        )}
+      </span>
+    </summary>
+
+    <ul className="ml-4 mt-2 space-y-2 text-sm">
+      <li>
+        <Link to="/productos/ec5d1aa5-d230-41aa-a7dc-fade78b0a441" className={styles.menuitem} onClick={closeMenu}>
+          Galletas/barritas/scoops
+        </Link>
+      </li>
+      <li>
+        <Link to="/productos/061950c4-73f1-410a-95f9-22a7a5f5558d" className={styles.menuitem} onClick={closeMenu}>
+          Vitaminas
+        </Link>
+      </li>
+      <li>
+        <Link to="/productos/e6f0b7cf-7aef-4892-929c-bda5b1009e0a" className={styles.menuitem} onClick={closeMenu}>
+          Carbohidratos
+        </Link>
+      </li>
+      <li>
+        <Link to="/productos/deb95bec-5df4-4e5b-99a8-ef6243c3a010" className={styles.menuitem} onClick={closeMenu}>
+          Glutamina
+        </Link>
+      </li>
+      <li>
+        <Link to="/productos/fe41ea76-e1c0-4b0a-9af6-561102ad4490" className={styles.menuitem} onClick={closeMenu}>
+          Gainer
+        </Link>
+      </li>
+      <li>
+        <Link to="/productos/1907451b-4a87-4b53-875b-79b8b7735ed5" className={styles.menuitem} onClick={closeMenu}>
+          Creatina
+        </Link>
+      </li>
+      <li>
+        <Link to="/productos/a96452d8-71af-4bc1-8cc5-c1c9950d9639" className={styles.menuitem} onClick={closeMenu}>
+          Termogénicos
+        </Link>
+      </li>
+      <li>
+        <Link to="/productos/441a656e-f89d-458f-8444-cfd965d1d7b2" className={styles.menuitem} onClick={closeMenu}>
+          Proteínas
+        </Link>
+      </li>
+      <li>
+        <Link to="/productos/97d25b2d-71b4-11ea-8d93-0603130a05b8" className={styles.menuitem} onClick={closeMenu}>
+          Prework-Out
+        </Link>
+      </li>
+      <li>
+        <Link to="/productos/97d25b14-71b4-11ea-8d93-0603130a05b8" className={styles.menuitem} onClick={closeMenu}>
+          Bcaa/Aminos
+        </Link>
+      </li>
+    </ul>
+  </details>
+</li>
+
               {/* Buscador */}
               <li className="relative">
                 {showInput ? (
